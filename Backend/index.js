@@ -1,14 +1,16 @@
 const express= require('express');
 require('dotenv').config();
 require('./Connection/dbConc')
-const user=require('./Routes/user')
+const User=require('./Routes/user')
+const Books=require('./Routes/book')
 
 const PORT=process.env.PORT || 1000;
 
 const app= express();
 
 app.use(express.json())
-app.use("/api/v1",user)
+app.use("/api/v1",User)
+app.use("/api/v1",Books)
 
 
 app.get('/',(req,res)=>{
