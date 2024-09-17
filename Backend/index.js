@@ -3,6 +3,7 @@ require('dotenv').config();
 require('./Connection/dbConc')
 const User=require('./Routes/user')
 const Books=require('./Routes/book')
+const Favourite= require('./Routes/Favourite')
 
 const PORT=process.env.PORT || 1000;
 
@@ -11,6 +12,7 @@ const app= express();
 app.use(express.json())
 app.use("/api/v1",User)
 app.use("/api/v1",Books)
+app.use("/api/v1",Favourite)
 
 
 app.get('/',(req,res)=>{
