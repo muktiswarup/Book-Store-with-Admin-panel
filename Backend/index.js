@@ -4,7 +4,7 @@ require('./Connection/dbConc')
 const User=require('./Routes/user')
 const Books=require('./Routes/book')
 const Favourite= require('./Routes/Favourite')
-
+const Cart=require("./Routes/cart")
 const PORT=process.env.PORT || 1000;
 
 const app= express();
@@ -13,6 +13,7 @@ app.use(express.json())
 app.use("/api/v1",User)
 app.use("/api/v1",Books)
 app.use("/api/v1",Favourite)
+app.use("/api/v1",Cart)
 
 
 app.get('/',(req,res)=>{
