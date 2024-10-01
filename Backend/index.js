@@ -1,6 +1,7 @@
 const express= require('express');
 require('dotenv').config();
 require('./Connection/dbConc')
+const cors=require('cors')
 
 const User=require('./Routes/user')
 const Books=require('./Routes/book')
@@ -12,6 +13,7 @@ const PORT=process.env.PORT || 1000;
 
 const app= express();
 
+app.use(cors());
 app.use(express.json())
 app.use("/api/v1",User)
 app.use("/api/v1",Books)

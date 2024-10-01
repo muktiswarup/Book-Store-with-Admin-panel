@@ -108,7 +108,7 @@ const Navbar = () => {
 
         {/* Links for Large Screen */}
         <div className="nav-links-bookheaven items-center gap-4 relative">
-          <div className="md:flex gap-4 items-center hidden">
+          <div className="md:flex gap-4 items-center hidden">   {/* hidden means valid for large screen not small */}
             {Links.map((item, i) => (
               <Link
                 to={item.link}
@@ -136,7 +136,7 @@ const Navbar = () => {
           </div>
 
           {/* Menu Button for Small/Medium Screen */}
-          <div className="md:hidden">
+          <div className="md:hidden">   {/* applicable for small devices only */}
             <button onClick={toggleMenu}>
               <FaGripLines className="text-2xl" />
             </button>
