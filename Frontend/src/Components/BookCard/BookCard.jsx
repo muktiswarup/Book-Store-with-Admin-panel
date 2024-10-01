@@ -5,7 +5,7 @@ const BookCard = ({data}) => {
    
   return (
     <>
-        <Link>
+        <Link to={`/view-book-details/${data._id}`}>
             <div className='bg-zinc-800 rounded p-4 flex flex-col'>
                 <div className='bg-zinc-900 rounded flex items-center justify-center'>
                     <img src={data.url} alt="book" className='h-[25vh] w-[30vh]' />
@@ -15,7 +15,7 @@ const BookCard = ({data}) => {
                 <p className='mt-2 text-xl font-semibold text-zinc-200'>{data.price}₹</p>
             </div>
         </Link>
-    </>
+    </> 
   )
 }
 

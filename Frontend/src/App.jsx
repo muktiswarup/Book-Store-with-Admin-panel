@@ -8,6 +8,7 @@ import Profile from './Pages/Profile'
 import AllBooks from './Pages/AllBooks'
 import SignIn from './Pages/SignIn'
 import SignUp from './Pages/SignUp'
+import ViewBookDetais from './Components/ViewBookDetails/ViewBookDetais'
 function App() {
   
 
@@ -17,11 +18,12 @@ function App() {
         <Navbar></Navbar>
         <Routes>
             <Route exact path='/' element={<Home/>}/>
-            <Route exact path='/all-books' element={<AllBooks/>}/>
-            <Route exact path='/cart' element={<Cart/>}/>
-            <Route exact path='/profile' element={<Profile/>}/>
-            <Route exact path='/signin' element={<SignIn/>}/>
-            <Route exact path='/signup' element={<SignUp/>}/>
+            <Route  path='/all-books' element={<AllBooks/>}/>
+            <Route  path='/cart' element={<Cart/>}/>
+            <Route  path='/profile' element={<Profile/>}/>
+            <Route  path='/signin' element={<SignIn/>}/>
+            <Route  path='/signup' element={<SignUp/>}/>
+            <Route path="/view-book-details/:id" element={<ViewBookDetais />} />
         </Routes>
         <Footer></Footer>
       </Router>

@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const router = require("express").Router();
 const Book = require("../Model/books");
 const User = require("../Model/User");
@@ -118,20 +119,27 @@ router.get('/get-recently-books',async (req,res)=>{
 
 //Get particular book details by id 
 
-router.get('/get-book-by-id/:id', async (req,res)=>{
-    try {
-        const {id}= req.params;
-        const book= await Book.findById(id)
-        res.status(200).json({
-        status: "Success",
-        data:book
-    })
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({
-            message:'Internal server error'
-        })
-    }
-})
+router.get('/get-book-by-id/:id', async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: 'Invalid book ID' });
+  }
+
+  try {
+      const book = await Book.findById(id);
+      if (!book) {
+          return res.status(404).json({ message: 'Book not found' });
+      }
+
+      res.status(200).json({
+          status: 'Success',
+          data: book
+      });
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
 module.exports = router;
