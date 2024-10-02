@@ -13,7 +13,7 @@ router.post('/sign-up', async(req,res)=>{
         // username length must be more than 4
         if(username.length <4){
             return res.status(400).json({
-                msz:"User name length must be greater than 3"
+                message:"User name length must be greater than 3"
             })
         }
 
@@ -21,7 +21,7 @@ router.post('/sign-up', async(req,res)=>{
         const existingusername= await User.findOne({username:username})
         if(existingusername){
            return res.status(400).json({
-                msz: "The user is already exist"
+                message: "The user is already exist"
             })
         }
 
@@ -29,14 +29,14 @@ router.post('/sign-up', async(req,res)=>{
         const existingemail= await User.findOne({email:email});
         if(existingemail){
            return res.status(400).json({
-                msz:"This email is already exist "
+                message:"This email is already exist "
             })
         }
 
         //check the password is greater 5 or not
         if(password.length<6){
            return res.status(400).json({
-                msz:"The password length must be greater then 5"
+                message:"The password length must be greater then 5"
             })
         }
 
@@ -51,7 +51,7 @@ router.post('/sign-up', async(req,res)=>{
         })
         await newuser.save();
         return res.status(200).json({
-            msz: "User details created successfully"
+            message: "User details created successfully"
         })
         
 
@@ -59,7 +59,7 @@ router.post('/sign-up', async(req,res)=>{
     } catch (error) {
         console.log(error)
         return res.status(500).json({
-            msz: "Internal server error"
+            message: "Internal server error"
         })
     }
 })
@@ -78,7 +78,7 @@ router.post('/sign-in', async (req,res)=>{
         // Check user exist or not in the database 
         if(!existinguser){
             return res.status(400).json({
-                msz:"Username not existing please give correct credential."
+                message:"Username not existing please give correct credential."
             })
         }
 
@@ -98,19 +98,20 @@ router.post('/sign-in', async (req,res)=>{
                return res.status(200).json({
                     id:existinguser._id,
                     role:existinguser.role,
-                    token:token
+                    token:token,
+                    message:'User successfully logged in.'
                 })
             }
             else{
                return res.status(400).json({
-                    msz:"invalid password please try again"
+                    message:"invalid password please try again"
                 })
             }
         })
 
     } catch (error) {
         return res.status(500).json({
-            msz:"Internal Server Error"
+            message:"Internal Server Error"
         })
 
     }
