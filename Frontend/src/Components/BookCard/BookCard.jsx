@@ -6,7 +6,7 @@ const BookCard = ({data}) => {
   return (
     <>
         <Link to={`/view-book-details/${data._id}`}>
-            <div className='bg-zinc-800 rounded p-4 flex flex-col'>
+            <div className='bg-zinc-800 rounded p-4 flex flex-col hover:bg-zinc-700 transition-all duration-300'>
                 <div className='bg-zinc-900 rounded flex items-center justify-center'>
                     <img src={data.url} alt="book" className='h-[25vh] w-[30vh]' />
                 </div>

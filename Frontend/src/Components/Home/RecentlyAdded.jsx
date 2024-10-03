@@ -22,8 +22,8 @@ useEffect(()=>{
         <div className='my-8 grid md:grid-cols-4 gap-8 sm:grid-cols-3 grid-cols-1 '>
             {
                 Data && Data.map((item,i)=>(
-                    <div key={i}>
-                        <BookCard data={item}/> {" "}
+                    <div key={i} >
+                        <BookCard data={item}/> 
                     </div>
                 ))
             }
