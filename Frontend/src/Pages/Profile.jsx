@@ -29,13 +29,13 @@ useEffect(()=>{
 },[])
 
   return (
-    <div className='bg-zinc-900 px-2 md:px-12 flex flex-col md:flex-row h-[95vh] py-8 gap-4'>
+    <div className='bg-zinc-900 px-2 md:px-12 flex flex-col md:flex-row  py-8 gap-4'>
       {!Profile && (<div className='flex justify-center items-center'><Loader/></div>)}
       {
         Profile && (
           <>
           
-            <div className='w-full md:w-1/6 '><Sidebar data={Profile}/></div>
+            <div className='w-full md:w-1/6 h-screen'><Sidebar data={Profile}/></div>
             <div className='w-full md:w-5/6'><Outlet/></div>
             
           </>

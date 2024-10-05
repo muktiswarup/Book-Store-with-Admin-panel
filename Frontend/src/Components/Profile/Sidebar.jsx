@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import { FaSignOutAlt } from 'react-icons/fa';
 const Sidebar = ({data}) => {
-    console.log(data)
+    // console.log(data)
   return (
     <div className='bg-zinc-800 p-4 rounded h-[85vh]  flex-col flex justify-between'>
         <div className='flex flex-col items-center'>
