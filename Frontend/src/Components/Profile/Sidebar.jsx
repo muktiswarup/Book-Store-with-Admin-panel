@@ -6,7 +6,7 @@ const Sidebar = ({data}) => {
   return (
     <div className='bg-zinc-800 p-4 rounded h-[85vh]  flex-col flex justify-between'>
         <div className='flex flex-col items-center'>
-        <img src='./456212.png' alt="logo" className='w-12' />
+        <img src='/456212.png' alt="logo" className='w-12' />
         <p className='mt-3 text-xl text-zinc-100 font-semibold'>{data.username}</p>
         <p className='mt-3 text-normal text-zinc-300'>{data.email}</p>
         <div className='w-full mt-4 h-[1px] bg-zinc-500 hidden lg:block'></div>

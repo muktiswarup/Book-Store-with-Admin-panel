@@ -27,7 +27,7 @@ router.post("/place-order",authenticateToken, async(req,res)=>{
             
         }
         return res.status(200).json({
-            status:"succss",
+            status:"success",
             message:"Order placed succesfully"
         })
     } catch (error) {
