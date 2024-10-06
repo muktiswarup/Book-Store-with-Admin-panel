@@ -24,11 +24,11 @@ const Favourites = () => {
   return (
     <>
       {FavouriteBook && FavouriteBook.length === 0 && (
-        <div   className="flex flex-col items-center justify-center h-full">
+        <div className="flex flex-col items-center justify-center h-full">
           <div className="flex items-center justify-center text-5xl font-semibold text-blue-700">
             No Books Available In the Favourite
           </div>
-          <div  className="flex items-center justify-center text-5xl font-semibold text-red-700 mt-5">
+          <div className="flex items-center justify-center text-5xl font-semibold text-red-700 mt-5">
             <TfiFaceSad />
           </div>
         </div>
