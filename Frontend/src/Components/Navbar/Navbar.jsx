@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const Links = [
+  const userLinks = [
     {
       title: "Home",
       link: "/",
     },
     {
-      title: "AllBooks",
+      title: "All Books",
       link: "/all-books",
     },
     {
@@ -21,6 +21,25 @@ const Navbar = () => {
     },
     {
       title: "Profile",
+      link: "/profile",
+    },
+  ];
+
+  const adminLinks = [
+    {
+      title: "Home",
+      link: "/",
+    },
+    {
+      title: "All Books",
+      link: "/all-books",
+    },
+    {
+      title: "Cart",
+      link: "/cart",
+    },
+    {
+      title: "Admin Profile",
       link: "/profile",
     },
   ];
@@ -34,9 +53,11 @@ const Navbar = () => {
   };
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  if (isLoggedIn === false) {
-    Links.splice(2, 2);
-  }
+  const role = useSelector((state) => state.auth.role);
+
+  // Determine which links to render based on role
+  const Links = role === "admin" ? adminLinks : userLinks;
+
   return (
     <div>
       {/* Navbar Header */}
@@ -48,13 +69,14 @@ const Navbar = () => {
             src="https://cdn-icons-png.flaticon.com/128/10433/10433049.png"
             alt="logo"
           />
-          <h1 className="text-2xl font-semibold hover:text-blue-700">KitabMahal</h1>
+          <h1 className="text-2xl font-semibold hover:text-blue-700">
+            KitabMahal
+          </h1>
         </Link>
 
         {/* Links for Large Screen */}
         <div className="nav-links-bookheaven items-center gap-4 relative">
           <div className="md:flex gap-4 items-center hidden">
-            {" "}
             {/* hidden means valid for large screen not small */}
             {Links.map((item, i) => (
               <Link
@@ -87,7 +109,6 @@ const Navbar = () => {
 
           {/* Menu Button for Small/Medium Screen */}
           <div className="md:hidden">
-            {" "}
             {/* applicable for small devices only */}
             <button onClick={toggleMenu}>
               <FaGripLines className="text-2xl" />
