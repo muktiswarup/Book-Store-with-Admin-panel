@@ -8,6 +8,13 @@ const MobileNav = () => {
       {role === "user" && (
         <>
           <Link
+            to="/profile"
+            className="text-zinc-100 font-semibold w-full py-2 text-center  hover:bg-zinc-900 rounded transition-all duration-300 hover:text-zinc-600 bg-slate-500"
+          >
+            Favourites
+          </Link>
+
+          <Link
             to="/profile/orderhistory"
             className="text-zinc-100 font-semibold w-full py-2 text-center  hover:bg-zinc-900 rounded transition-all duration-300 hover:text-zinc-600 bg-slate-500"
           >
@@ -18,6 +25,25 @@ const MobileNav = () => {
             className="text-zinc-100 font-semibold w-full py-2 text-center  hover:bg-zinc-900 rounded transition-all duration-300 hover:text-zinc-600 bg-slate-500"
           >
             Settings
+          </Link>
+        </>
+      )}
+
+      {role === "admin" && (
+        <>
+          <Link
+            to="/profile"
+            className="text-zinc-100 font-semibold w-full py-2 text-center  hover:bg-zinc-900 rounded transition-all duration-300 hover:text-zinc-600 bg-slate-500"
+          >
+           All Orders
+
+          </Link>
+
+          <Link
+            to="/profile/add-book"
+            className="text-zinc-100 font-semibold w-full py-2 text-center hover:bg-zinc-900 rounded transition-all duration-300 hover:text-zinc-600 bg-slate-500"
+          >
+            Add Book
           </Link>
         </>
       )}

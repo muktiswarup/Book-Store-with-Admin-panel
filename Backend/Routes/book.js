@@ -30,12 +30,12 @@ router.post("/add-book", authenticateToken, async (req, res) => {
     });
     await book.save();
     return res.status(200).json({
-      messaze: "Book added succesfully by the admin",
+      message: "Book added succesfully by the admin",
     });
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      msz: "Internal server error",
+      message: "Internal server error",
     });
   }
 });

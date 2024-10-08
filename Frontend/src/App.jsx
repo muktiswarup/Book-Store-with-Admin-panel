@@ -1,5 +1,5 @@
 import "./App.css";
-import {  Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Pages/Home";
@@ -16,6 +16,7 @@ import Favourites from "./Components/Profile/Favourites";
 import UserOrderHistory from "./Components/Profile/UserOrderHistory";
 import Settings from "./Components/Profile/Settings";
 import AllOrder from "./Pages/AllOrder";
+import AddBook from "./Pages/AddBook";
 function App() {
   const dispatch = useDispatch();
   const role = useSelector((state) => state.auth.role);
@@ -37,15 +38,22 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/all-books" element={<AllBooks />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/profile" element={<Profile />}> 
-          {role==='user' ? <Route index path="/profile" element={<Favourites/>}/> : <Route index path="/profile" element={<AllOrder/>}/>}
-          <Route path="/profile/orderhistory" element={<UserOrderHistory/>}/>
-          <Route path="/profile/settings" element={<Settings/>}/>
+        <Route path="/profile" element={<Profile />}>
+          {/* Use path without "/" for nested routes */}
+          {role === "user" ? (
+            <Route index element={<Favourites />} />
+          ) : (
+            <Route index element={<AllOrder />} />
+          )}
+          <Route path="add-book" element={<AddBook />} />
+          <Route path="orderhistory" element={<UserOrderHistory />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/view-book-details/:id" element={<ViewBookDetais />} />
       </Routes>
+
       <Footer></Footer>
     </>
   );

@@ -25,6 +25,7 @@ const Navbar = () => {
     },
   ];
 
+ 
   const adminLinks = [
     {
       title: "Home",
@@ -58,6 +59,11 @@ const Navbar = () => {
   // Determine which links to render based on role
   const Links = role === "admin" ? adminLinks : userLinks;
 
+  if(!isLoggedIn){
+    userLinks.splice(2,2)
+  }
+
+
   return (
     <div>
       {/* Navbar Header */}
@@ -70,7 +76,7 @@ const Navbar = () => {
             alt="logo"
           />
           <h1 className="text-2xl font-semibold hover:text-blue-700">
-            KitabMahal
+          BookNest
           </h1>
         </Link>
 
@@ -88,7 +94,7 @@ const Navbar = () => {
               </Link>
             ))}
             <div className="flex gap-4 items-center">
-              {isLoggedIn === false && (
+              {!isLoggedIn && (
                 <>
                   <Link
                     to="/signin"

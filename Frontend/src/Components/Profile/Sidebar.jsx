@@ -54,7 +54,12 @@ const role= useSelector((state)=>state.auth.role)
           >
             All Orders
           </Link>
-
+          <Link
+            to="/profile/add-book"
+            className="text-zinc-100 font-semibold w-full py-2 text-center hover:bg-zinc-900 rounded transition-all duration-300 hover:text-zinc-600"
+          >
+            Add Book
+          </Link>
           
         </div>
         )

@@ -4,7 +4,7 @@ import BookCard from "../BookCard/BookCard";
 import { TfiFaceSad } from "react-icons/tfi";
 
 const Favourites = () => {
-  const [FavouriteBook, setFavoriteBook] = useState();
+  const [FavouriteBook, setFavoriteBook] = useState([]);
 
   const headers = {
     id: localStorage.getItem("id"),
@@ -21,20 +21,23 @@ const Favourites = () => {
     };
     fetch();
   }, [FavouriteBook]);
+
   return (
     <>
+      {/* Show when no favourite books are available */}
       {FavouriteBook && FavouriteBook.length === 0 && (
-        <div className="flex flex-col items-center justify-center h-full">
-          <div className="flex items-center justify-center text-5xl font-semibold text-blue-700">
+        <div className="flex flex-col items-center justify-center h-full text-center px-4">
+          <div className="text-3xl font-semibold text-blue-700">
             No Books Available In the Favourite
           </div>
-          <div className="flex items-center justify-center text-5xl font-semibold text-red-700 mt-5">
+          <div className="text-6xl font-semibold text-red-700 mt-5">
             <TfiFaceSad />
           </div>
         </div>
       )}
 
-      <div className="grid grid-cols-4 gap-4 ">
+      {/* Grid of favourite books */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
         {FavouriteBook &&
           FavouriteBook.map((item, i) => (
             <div key={i}>
