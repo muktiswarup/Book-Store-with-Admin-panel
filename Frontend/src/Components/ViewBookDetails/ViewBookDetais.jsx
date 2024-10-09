@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "../Loader/Loader";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { GrLanguage } from "react-icons/gr";
 import { FaHeart, FaRegEdit } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const ViewBookDetails = () => {
   const { id } = useParams();
   const [Data, setData] = useState(null); // Initialize with null to check later
+  const navigate=useNavigate();
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const role = useSelector((state) => state.auth.role);
@@ -65,6 +67,19 @@ const ViewBookDetails = () => {
     }
   };
 
+  const deleteBook=async()=>{
+    try {
+      const response= await axios.delete("http://localhost:3000/api/v1/delete-book",{headers})
+      alert(response.data.message)
+      console.log(response)
+      navigate('/all-books')
+
+    } catch (error) {
+      console.log(error)
+      alert(error.response.data.message)
+    }
+  }
+
   return (
     <>
       {Data ? (
@@ -104,14 +119,14 @@ const ViewBookDetails = () => {
               {isLoggedIn === true && role === "admin" && (
                 <div className="flex items-center justify-between mt-5 gap-4">
                   {/* Edit Book Button */}
-                  <button className="flex items-center justify-center bg-white text-yellow-500 rounded-full px-4 py-2 md:px-8 md:py-4 hover:bg-zinc-700">
+                  <Link to={`/updatebook/${id}`} className="flex items-center justify-center bg-white text-yellow-500 rounded-full px-4 py-2 md:px-8 md:py-4 hover:bg-zinc-700">
                     <FaRegEdit className="text-2xl md:text-3xl lg:text-4xl" />
                     <span className="hidden lg:inline-block text-white ml-2">
                       Edit Book
                     </span>
-                  </button>
+                  </Link>
                   {/* Delete Book Button */}
-                  <button className="flex items-center justify-center bg-white text-red-800 rounded-full px-4 py-2 md:px-8 md:py-4 hover:bg-zinc-700">
+                  <button className="flex items-center justify-center bg-white text-red-800 rounded-full px-4 py-2 md:px-8 md:py-4 hover:bg-zinc-700" onClick={deleteBook}>
                     <MdDelete className="text-2xl md:text-3xl lg:text-4xl" />
                     <span className="hidden lg:inline-block text-white ml-2">
                       Delete Book

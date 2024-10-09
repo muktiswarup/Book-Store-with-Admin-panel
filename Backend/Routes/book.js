@@ -54,7 +54,7 @@ router.put("/update-book", authenticateToken, async (req, res) => {
       language: req.body.language,
     });
     return res.status(201).json({
-      messaze: "Book updated successfully by the admin",
+      message: "Book updated successfully by the admin",
     });
   } catch (error) {
     console.log(error);

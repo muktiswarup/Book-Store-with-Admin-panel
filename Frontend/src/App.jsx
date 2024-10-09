@@ -17,6 +17,8 @@ import UserOrderHistory from "./Components/Profile/UserOrderHistory";
 import Settings from "./Components/Profile/Settings";
 import AllOrder from "./Pages/AllOrder";
 import AddBook from "./Pages/AddBook";
+import UpdateBook from "./Pages/UpdateBook";
+import DeleteAllOrder from "./Pages/DeleteAllOrder";
 function App() {
   const dispatch = useDispatch();
   const role = useSelector((state) => state.auth.role);
@@ -46,12 +48,14 @@ function App() {
             <Route index element={<AllOrder />} />
           )}
           <Route path="add-book" element={<AddBook />} />
+          <Route path="delete-all-order" element={<DeleteAllOrder/>}/>
           <Route path="orderhistory" element={<UserOrderHistory />} />
           <Route path="settings" element={<Settings />} />
         </Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/view-book-details/:id" element={<ViewBookDetais />} />
+        <Route path="updatebook/:id" element={<UpdateBook />} />
       </Routes>
 
       <Footer></Footer>
